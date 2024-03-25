@@ -47,6 +47,10 @@ else
     DUCKSTATION_DEPENDENCIES += libdrm sdl2 libevdev libxkbcommon
 endif
 
+ifeq ($(BR2_PACKAGE_BATOCERA_TARGET_H5),y)
+    DUCKSTATION_CONF_OPTS += -DUSE_DRMKMS=OFF -DUSE_FBDEV=ON
+endif
+
 define DUCKSTATION_INSTALL_TARGET_CMDS
     mkdir -p $(TARGET_DIR)/usr/bin
     mkdir -p $(TARGET_DIR)/usr/lib
